@@ -16,11 +16,14 @@ export const operationsSlice = createSlice({
     },
     deleteAll: (state,action) => {
       return {items: []}
-
+    },
+    removeTodo: (state, action) => {
+      const filteredTodos = state.items.filter((todo) => todo.id!==action.payload);
+      return {items: filteredTodos}
     }
     
   },
 });
-export const {addTodo, deleteAll} = operationsSlice.actions;
+export const {addTodo, deleteAll, removeTodo} = operationsSlice.actions;
 
 export default operationsSlice.reducer;
