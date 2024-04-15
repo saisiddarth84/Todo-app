@@ -6,13 +6,15 @@ import { edit2 } from "react-icons-kit/feather/edit2";
 import { useDispatch } from "react-redux";
 import { removeTodo } from "../redux/todoapp/reducers/operations";
 
-function Todos() {
+function Todos({ handleEditClick, editFormVisibility }) {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.operations.items);
   return todos.map((todo) => (
     <div key={todo.id} className="todo-box">
       <div className="content">
-        <input type="checkbox" checked={todo.completed}></input>
+        {editFormVisibility === false && (
+          <input type="checkbox" checked={todo.completed}></input>
+        )}
         <div
           style={
             todo.completed === true
@@ -24,12 +26,19 @@ function Todos() {
         </div>
       </div>
       <div className="actions-box">
-        <span>
-          <Icon icon={edit2} />
-        </span>
-        <span>
-          <Icon onClick={() => dispatch(removeTodo(todo.id))} icon={trash} />
-        </span>
+        {editFormVisibility === false && (
+          <>
+            <span>
+              <Icon onClick={() => handleEditClick(todo)} icon={edit2} />
+            </span>
+            <span>
+              <Icon
+                onClick={() => dispatch(removeTodo(todo.id))}
+                icon={trash}
+              />
+            </span>
+          </>
+        )}
       </div>
     </div>
   ));

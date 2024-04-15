@@ -20,10 +20,27 @@ export const operationsSlice = createSlice({
     removeTodo: (state, action) => {
       const filteredTodos = state.items.filter((todo) => todo.id!==action.payload);
       return {items: filteredTodos}
+    },
+    handleEditSubmit: (state, action) => {
+      const data = action.payload;
+      const updatedItems = state.items.map(item => {
+        if (item.id === data.id) {
+          return {
+            todo: data.todo,
+            completed: data.completed,
+          };
+        }
+        return item; 
+      });
+    
+      return {
+        items: updatedItems,
+      };
+     
     }
     
   },
 });
-export const {addTodo, deleteAll, removeTodo} = operationsSlice.actions;
+export const {addTodo, deleteAll, removeTodo, handleEditSubmit} = operationsSlice.actions;
 
 export default operationsSlice.reducer;
