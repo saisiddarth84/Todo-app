@@ -5,6 +5,7 @@ import { trash } from "react-icons-kit/feather/trash";
 import { edit2 } from "react-icons-kit/feather/edit2";
 import { useDispatch } from "react-redux";
 import { removeTodo } from "../redux/todoapp/reducers/operations";
+import { handleCheckbox } from "../redux/todoapp/reducers/operations";
 
 function Todos({ handleEditClick, editFormVisibility }) {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ function Todos({ handleEditClick, editFormVisibility }) {
     <div key={todo.id} className="todo-box">
       <div className="content">
         {editFormVisibility === false && (
-          <input type="checkbox" checked={todo.completed}></input>
+          <input type="checkbox" checked={todo.completed} onChange={() => {
+            dispatch(handleCheckbox(todo.id))
+          }}></input>
         )}
         <div
           style={
