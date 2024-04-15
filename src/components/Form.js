@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
-
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../redux/todoapp/reducers/operations';
 function Form() {
+    const dispatch = useDispatch();
+
     const [todoValue, setTodoValue] = useState('');
 
     const handleSubmit = (e) => {
@@ -13,6 +16,7 @@ function Form() {
             completed: false,
         }
         setTodoValue('');
+        dispatch(addTodo(todoObj))
     }
   return (
     <form className='form-group custom-form' onSubmit={handleSubmit}>

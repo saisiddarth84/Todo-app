@@ -5,7 +5,7 @@ import { trash } from "react-icons-kit/feather/trash";
 import { edit2 } from "react-icons-kit/feather/edit2";
 
 function Todos() {
-  const todos = useSelector((state) => state.operations);
+  const todos = useSelector((state) => state.operations.items);
   return todos.map((todo) => (
     <div key={todo.id} className="todo-box">
       <div className="content">
