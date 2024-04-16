@@ -19,25 +19,31 @@ function App() {
 
   const cancelUpdate = () => {
     setEditFormVisibility(false);
-  }
+  };
 
   return (
     <div className="wrapper">
-      <br></br>
-      <h1 className="text-center">TODO LIST</h1>
-      <Form editFormVisibility={editFormVisibility}  editTodo={editTodo} cancelUpdate={cancelUpdate}/>
-      <Todos
-        handleEditClick={handleEditClick}
-        editFormVisibility={editFormVisibility}
-      />
-      {todos.length > 1 && (
-        <button
-          className="btn btn-danger btn-md delete-all"
-          onClick={() => dispatch(deleteAll())}
-        >
-          DELETE ALL
-        </button>
-      )}
+      <div className="container">
+        <br></br>
+        <h1 className="text-center">TODO LIST</h1>
+        <Form
+          editFormVisibility={editFormVisibility}
+          editTodo={editTodo}
+          cancelUpdate={cancelUpdate}
+        />
+        <Todos
+          handleEditClick={handleEditClick}
+          editFormVisibility={editFormVisibility}
+        />
+        {todos.length > 1 && (
+          <button
+            className="btn btn-danger btn-md delete-all"
+            onClick={() => dispatch(deleteAll())}
+          >
+            DELETE ALL
+          </button>
+        )}
+      </div>
     </div>
   );
 }

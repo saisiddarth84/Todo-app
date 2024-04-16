@@ -94,9 +94,11 @@
 
 
 @media (max-width: 550px) {
-  *{
-    scale: 0.95;
+  .container{
+    scale: 0.9
   }
+
+  
 
   .custom-form{
     width: 100%;
