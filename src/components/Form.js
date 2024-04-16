@@ -41,7 +41,7 @@ function Form({ editFormVisibility, editTodo, cancelUpdate }) {
     <>
       {editFormVisibility === false ? (
         <form className="form-group custom-form" onSubmit={handleSubmit}>
-          <label>Add your todo-item</label>
+          <label style={{marginBlock: '10px'}}>Add your todo-item</label>
           <div className="input-and-btn">
             <input
               type="text"
