@@ -1,59 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  items: JSON.parse(localStorage.getItem("todos")) || [],
+};
+
 export const operationsSlice = createSlice({
   name: "operations",
-  initialState: {
-    items: [],
-  },
+  initialState,
   reducers: {
     addTodo: (state, action) => {
       state.items.push(action.payload);
+      localStorage.setItem("todos", JSON.stringify(state.items));
     },
     deleteAll: (state, action) => {
-      return { items: [] };
+      state.items = [];
+      localStorage.setItem("todos", JSON.stringify(state.items));
     },
     removeTodo: (state, action) => {
-      const filteredTodos = state.items.filter(
-        (todo) => todo.id !== action.payload
-      );
-      return { items: filteredTodos };
+      state.items = state.items.filter((todo) => todo.id !== action.payload);
+      localStorage.setItem("todos", JSON.stringify(state.items));
     },
     handleEditSubmit: (state, action) => {
       const data = action.payload;
-      const updatedItems = state.items.map((item) => {
-        if (item.id === data.id) {
-          return {
-            id: data.id,
-            todo: data.todo,
-            completed: data.completed,
-          };
-        }
-        return item;
-      });
-
-      return {
-        items: updatedItems,
-      };
+      const index = state.items.findIndex((item) => item.id === data.id);
+      if (index !== -1) {
+        state.items[index] = { ...data };
+        localStorage.setItem("todos", JSON.stringify(state.items));
+      }
     },
     handleCheckbox: (state, action) => {
       const itemId = action.payload;
-      const updatedItems = state.items.map((item) => {
-        if (item.id === itemId) {
-          return {
-            id: item.id,
-            todo: item.todo,
-            completed: !item.completed,
-          };
-        }
-        return item;
-      });
-
-      return {
-        items: updatedItems,
-      };
+      const index = state.items.findIndex((item) => item.id === itemId);
+      if (index !== -1) {
+        state.items[index].completed = !state.items[index].completed;
+        localStorage.setItem("todos", JSON.stringify(state.items));
+      }
     },
   },
 });
+
 export const {
   addTodo,
   deleteAll,
