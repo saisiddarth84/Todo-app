@@ -15,18 +15,31 @@ This is a simple Todo application built with React.js and Redux for state manage
 
 ```bash
 git clone https://github.com/saisiddarth84/Todo-app
+```
 
-# 2. Navigate to the project directory:
+ 2. Navigate to the project directory:
+
+```bash
 cd todo-app
+```
 
 # 3. Install dependencies:
+
+```bash
 npm install
-
+```
 # 4. Start the development server:
-npm start
 
-# 5. Open your browser and visit 
-http://localhost:3000 to view the application.
+```bash
+npm start
+```
+
+# 5. Open your browser and visit to view the application.
+ 
+```bash
+http://localhost:3000 
+```
+
 
 ## Usage
 
