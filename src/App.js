@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./App.css";
 import Form from "./components/Form";
 import Todos from "./components/Todos";
 import { deleteAll } from "./redux/todoapp/reducers/operations";
