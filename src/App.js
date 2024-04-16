@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="wrapper">
       <br></br>
-      <h1 className="text-center">Todo app</h1>
+      <h1 className="text-center">TODO LIST</h1>
       <Form editFormVisibility={editFormVisibility}  editTodo={editTodo} cancelUpdate={cancelUpdate}/>
       <Todos
         handleEditClick={handleEditClick}

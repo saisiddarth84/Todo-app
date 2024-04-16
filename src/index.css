@@ -12,8 +12,15 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  background-color: #d1d4ec;
+  height: 100vh;
+}
+
+.wrapper h1{
+  font-weight: 700;
+  color:  #424242;
 }
 
 .custom-form{
